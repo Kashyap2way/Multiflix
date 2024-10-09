@@ -1,23 +1,23 @@
 // src/components/Login.js
 import React from 'react';
-import { signInWithGoogle } from 'src/firebaseConfig.js';
+import { signInWithGoogle } from '../firebaseConfig'; // Adjust the import path
 
 const Login = ({ setUser }) => {
-const handleLogin = async () => {
+  const handleLogin = async () => {
     const user = await signInWithGoogle();
     if (user) {
-    // Store user and redirect to OTP verification
-    setUser(user);
-    window.location.href = "/otp";
+      // Store user and redirect to OTP verification
+      setUser(user);
+      window.location.href = "/otp";
     }
-};
+  };
 
-return (
+  return (
     <div>
-    <h1>Login</h1>
-    <button onClick={handleLogin}>Login with Google</button>
+      <h1>Login</h1>
+      <button onClick={handleLogin}>Login with Google</button>
     </div>
-);
+  );
 };
 
 export default Login;

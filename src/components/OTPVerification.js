@@ -6,13 +6,13 @@ const OTPVerification = ({ user, setVerified }) => {
   const [otp, setOtp] = useState('');
 
   const handleSendOtp = () => {
-    axios.post('http://localhost:5000/send-otp', { email: user.email })
+    axios.post('http://localhost:5001/send-otp', { email: user.email })
       .then(() => alert('OTP sent to your email'))
       .catch(error => console.error('Error sending OTP:', error));
   };
 
   const handleVerifyOtp = () => {
-    axios.post('http://localhost:5000/verify-otp', { email: user.email, otp })
+    axios.post('http://localhost:5001/verify-otp', { email: user.email, otp })
       .then(() => setVerified(true))
       .catch(() => alert('Invalid OTP'));
   };
