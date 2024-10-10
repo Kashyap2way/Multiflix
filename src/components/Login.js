@@ -1,21 +1,46 @@
 // src/components/Login.js
-import React from 'react';
-import { signInWithGoogle } from '../firebaseConfig'; // Adjust the import path
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Login.css';
 
-const Login = ({ setUser }) => {
-  const handleLogin = async () => {
-    const user = await signInWithGoogle();
-    if (user) {
-      // Store user and redirect to OTP verification
-      setUser(user);
-      window.location.href = "/otp";
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Simple validation (can be any username and password)
+    if (username && password) {
+      // Redirect to dashboard
+      navigate('/dashboard');
+    } else {
+      alert('Please enter a username and password');
     }
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <button onClick={handleLogin}>Login with Google</button>
+    <div className="login-container">
+      <video className="background-video" autoPlay loop muted>
+        <source src={require('./assets/bgv1.mp4')} type="video/mp4" />
+      </video>
+
+      <div className="login-form">
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={handleLogin}>Login</button>
+      </div>
     </div>
   );
 };
