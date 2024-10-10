@@ -1,6 +1,7 @@
 // src/components/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { signInWithGoogle } from '../firebaseConfig'; // Import the Google sign-in function
 import './Login.css';
 
 const Login = () => {
@@ -17,6 +18,15 @@ const Login = () => {
       navigate('/dashboard');
     } else {
       alert('Please enter a username and password');
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    const user = await signInWithGoogle();
+    if (user) {
+      navigate('/dashboard'); // Redirect to dashboard after successful login
+    } else {
+      alert('Google login failed');
     }
   };
 
@@ -40,6 +50,12 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={handleLogin}>Login</button>
+
+        {/* Google Login Button */}
+        <div className="google-login" onClick={handleGoogleLogin}>
+          <img src={require('./assets/google-icon.png')} alt="Google logo" />
+          <span>Login with Google</span>
+        </div>
       </div>
     </div>
   );

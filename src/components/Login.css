@@ -106,3 +106,26 @@
 .login-form button:hover {
   background-color: #555;
 }
+
+.google-login {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 15px;
+  padding: 5px 8px; /* Reduced padding for a smaller button */
+  background-color: transparent; /* Optional: Change to a color if needed */
+  border: 1px solid rgba(255, 255, 255, 0.583); /* Optional: Border for the button */
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-size: 0.9rem; /* Reduced font size */
+}
+
+.google-login:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Change background on hover */
+}
+
+.google-login img {
+  width: 20px; /* Adjust size of the icon */
+  height: 20px;
+  margin-right: 5px; /* Reduce space between icon and text */
+}
