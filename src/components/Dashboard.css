@@ -1,0 +1,85 @@
+.dashboard-container {
+position: relative;
+width: 100%;
+height: 100vh;
+overflow: hidden; /* Hide any overflow */
+}
+
+.background-video {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover; /* Ensures the video covers the background without distortion */
+z-index: -1; /* Places the video behind the content */
+filter: brightness(0.4); /* Blur and darken the video */
+transform: scale(1.1); /* Slight zoom to avoid edges showing after blur */
+}
+
+.thumbnails-container {
+display: flex;
+justify-content: space-around;
+align-items: center;
+padding: 20px;
+position: relative; /* Keeps thumbnails on top of video */
+z-index: 1; /* Ensures the thumbnails are above the video */
+transform: translateY(50%);
+}
+
+.thumbnail-wrapper {
+position: relative; /* Necessary to position the options box */
+}
+
+.thumbnail {
+width: 200px;
+height: 300px;
+transition: transform 0.3s ease, filter 0.3s ease; /* Added filter transition for smooth blur */
+border-radius: 10px;
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+cursor: pointer;
+}
+
+.thumbnail:hover {
+transform: scale(1.1); /* Pop out effect */
+box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Blur effect when thumbnail is active */
+.thumbnail.blurred {
+filter: blur(5px) brightness(0.7); /* Apply blur and slight brightness */
+}
+
+/* Options box */
+.options-box {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 120px;
+padding: 10px;
+background: rgba(255, 255, 255, 0.1); /* Translucent background */
+border-radius: 12px;
+border: 2px solid white; /* White border */
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.option-btn {
+background: none;
+border: none;
+color: white;
+padding: 8px 12px;
+margin: 5px;
+cursor: pointer;
+font-size: 16px;
+border-radius: 8px;
+transition: background-color 0.3s ease;
+}
+
+.option-btn:hover {
+background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+}
