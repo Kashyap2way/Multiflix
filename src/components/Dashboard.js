@@ -7,6 +7,8 @@ import videoBg from './assets/bgv3.mp4'; // Import the background video
 const Dashboard = () => {
   const navigate = useNavigate(); // Initialize navigate
   const [activeThumbnail, setActiveThumbnail] = useState(null);
+  const [isHovering, setIsHovering] = useState(false); // State for hover effect
+  const [code, setCode] = useState(''); // State to manage code input
 
   // Array of thumbnails linked to Azure Blob Storage
   const thumbnails = [
@@ -38,6 +40,15 @@ const Dashboard = () => {
     });
   };
 
+  // Handle input change
+  const handleInputChange = (event) => {
+    const { value } = event.target;
+    // Allow only alphanumeric characters and limit to 5 characters
+    if (/^[a-zA-Z0-9]*$/.test(value) && value.length <= 5) {
+      setCode(value);
+    }
+  };
+
   return (
     <div className="dashboard-container">
       {/* Background video */}
@@ -66,6 +77,27 @@ const Dashboard = () => {
             )}
           </div>
         ))}
+      </div>
+
+      {/* Join Party box */}
+      <div className="join-party-box">
+        <button
+          className={`join-party-btn ${code.length === 5 ? 'valid-code' : ''}`}
+          onMouseEnter={() => setIsHovering(true)} // Set hover state
+          onMouseLeave={() => setIsHovering(false)} // Reset hover state
+          onClick={(e) => e.stopPropagation()} // Prevent click propagation
+        >
+          {code.length === 0 ? (isHovering ? 'Enter Code' : 'Join Party') : code} {/* Show code or button text */}
+          <input
+            type="text"
+            value={code}
+            onChange={handleInputChange}
+            placeholder=" "
+            maxLength={5} // Limit to 5 characters
+            className="hidden-input"
+            onFocus={(e) => e.target.select()} // Select text on focus
+          />
+        </button>
       </div>
     </div>
   );
