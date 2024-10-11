@@ -12,7 +12,14 @@ const Dashboard = () => {
   const [activeThumbnail, setActiveThumbnail] = useState(null);
 
   // Array of thumbnails
-  const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4, thumbnail5];
+  // Update thumbnail URLs to use Azure Blob Storage
+const thumbnails = [
+  'https://multiflixaccount.blob.core.windows.net/thumbnails/thumbnail1.jpg',
+  'https://multiflixaccount.blob.core.windows.net/thumbnails/thumbnail2.jpg',
+  'https://multiflixaccount.blob.core.windows.net/thumbnails/thumbnail3.jpg',
+  'https://multiflixaccount.blob.core.windows.net/thumbnails/thumbnail4.jpg',
+  'https://multiflixaccount.blob.core.windows.net/thumbnails/thumbnail5.jpg',
+];
 
   // Handle thumbnail click to display options
   const handleThumbnailClick = (index) => {
