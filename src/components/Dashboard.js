@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
 import './Dashboard.css'; // Import the CSS file for styling
-import thumbnail1 from './assets/thumbnail1.jpg'; // Importing the images
-import thumbnail2 from './assets/thumbnail2.jpg';
-import thumbnail3 from './assets/thumbnail3.jpg';
-import thumbnail4 from './assets/thumbnail4.jpg';
-import thumbnail5 from './assets/thumbnail5.jpg';
 import videoBg from './assets/bgv3.mp4'; // Import the background video
 
 const Dashboard = () => {
