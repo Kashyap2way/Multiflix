@@ -146,3 +146,21 @@ background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
   background-color: #000; /* Black background on hover */
   color: white; /* White text on hover */
 }
+
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #ff4b4b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #ff1a1a;
+}

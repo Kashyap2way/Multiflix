@@ -49,6 +49,11 @@ const Dashboard = () => {
     }
   };
 
+  // Handle logout
+  const handleLogout = () => {
+    navigate('/'); // Navigate back to the login page
+  };
+
   return (
     <div className="dashboard-container">
       {/* Background video */}
@@ -56,6 +61,11 @@ const Dashboard = () => {
         <source src={videoBg} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+
+      {/* Log out button */}
+      <button className="logout-button" onClick={handleLogout}>
+        Log Out
+      </button>
 
       {/* Thumbnail images */}
       <div className="thumbnails-container">
@@ -67,7 +77,7 @@ const Dashboard = () => {
               className={`thumbnail ${activeThumbnail === index ? 'blurred' : ''}`} // Apply blur if active
               onClick={() => handleThumbnailClick(index)} // Set the clicked thumbnail
             />
-            
+
             {/* Show options if the thumbnail is active */}
             {activeThumbnail === index && (
               <div className="options-box">
