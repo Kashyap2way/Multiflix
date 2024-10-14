@@ -164,3 +164,17 @@ background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
 .logout-button:hover {
   background-color: #ff1a1a;
 }
+
+.hover-episode-name {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  pointer-events: none; /* Ensure it doesn't interfere with clicking */
+  z-index: 1;
+}

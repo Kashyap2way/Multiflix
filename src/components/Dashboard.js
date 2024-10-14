@@ -1,4 +1,3 @@
-// src/components/Dashboard.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './Dashboard.css'; // Import the CSS file for styling
@@ -7,6 +6,7 @@ import videoBg from './assets/bgv3.mp4'; // Import the background video
 const Dashboard = () => {
   const navigate = useNavigate(); // Initialize navigate
   const [activeThumbnail, setActiveThumbnail] = useState(null);
+  const [hoveredThumbnail, setHoveredThumbnail] = useState(null); // State for tracking hovered thumbnail
   const [isHovering, setIsHovering] = useState(false); // State for hover effect
   const [code, setCode] = useState(''); // State to manage code input
 
@@ -17,6 +17,15 @@ const Dashboard = () => {
     'https://multiflixaccount.blob.core.windows.net/thumbnails/thumbnail3.jpg',
     'https://multiflixaccount.blob.core.windows.net/thumbnails/thumbnail4.jpg',
     'https://multiflixaccount.blob.core.windows.net/thumbnails/thumbnail5.jpg',
+  ];
+
+  // Array of episode names corresponding to thumbnails
+  const episodeNames = [
+    'Episode 1',
+    'Episode 2',
+    'Episode 3',
+    'Episode 4',
+    'Episode 5',
   ];
 
   // Array of episodes linked to Azure Blob Storage
@@ -70,13 +79,25 @@ const Dashboard = () => {
       {/* Thumbnail images */}
       <div className="thumbnails-container">
         {thumbnails.map((thumbnail, index) => (
-          <div className="thumbnail-wrapper" key={index}>
+          <div
+            className="thumbnail-wrapper"
+            key={index}
+            onMouseEnter={() => setHoveredThumbnail(index)} // Set hovered thumbnail
+            onMouseLeave={() => setHoveredThumbnail(null)} // Reset hover state
+          >
             <img
               src={thumbnail}
               alt={`thumbnail${index + 1}`}
               className={`thumbnail ${activeThumbnail === index ? 'blurred' : ''}`} // Apply blur if active
               onClick={() => handleThumbnailClick(index)} // Set the clicked thumbnail
             />
+
+            {/* Show episode name on hover */}
+            {hoveredThumbnail === index && (
+              <div className="hover-episode-name">
+                {episodeNames[index]} {/* Display episode name */}
+              </div>
+            )}
 
             {/* Show options if the thumbnail is active */}
             {activeThumbnail === index && (
